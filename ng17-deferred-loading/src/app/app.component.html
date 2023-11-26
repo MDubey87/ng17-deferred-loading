@@ -1,0 +1,75 @@
+<h2>&#64;defer with a logical expression</h2>
+
+<div>
+  <input #checkboxDefer type="checkbox" [checked]="isChecked" (change)="onChange()" id="checkboxDefer" />
+  <label for="checkboxDefer">Check this checkbox to load the component</label>
+</div>
+<br>
+
+@defer (when isChecked) {
+<app-defer1 />
+}
+@placeholder {
+<span><strong>Placeholder</strong></span>
+}
+@error {
+<span>Error</span>
+}
+@loading(minimum 1s) {
+<span>Loading...</span>
+}
+<h2>&#64;defer declarative trigger condition</h2>
+
+<h3>&#64;defer on interaction</h3>
+
+@defer (on interaction) {
+<span>Clicked</span>
+}
+@placeholder {
+<span>Placeholder (click on it!)</span>
+}
+
+<h3>&#64;defer on hover</h3>
+
+@defer (on hover) {
+<span>Hovered</span>
+}
+@placeholder {
+<span>Placeholder (hover it!)</span>
+}
+
+<h3>&#64;defer on idle</h3>
+
+@defer (on idle) {
+<span>Browser has reached an idle state</span>
+}
+@placeholder {
+<span>Placeholder</span>
+}
+
+<h3>&#64;defer on timer(5s)</h3>
+
+@defer (on timer(5s)) {
+<span>Visible after 5s</span>
+}
+@placeholder {
+<span>Placeholder</span>
+}
+
+<h3>Prefetch</h3>
+
+@defer (on interaction; prefetch on hover) {
+<app-defer3 />
+}
+@placeholder {
+<span>Placeholder (hover it, then click on it!)</span>
+}
+
+<h3>&#64;defer on viewport</h3>
+
+@defer (on viewport) {
+<app-defer2 text="The block entered the viewport" />
+}
+@placeholder {
+<span>Placeholder</span>
+}
